@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <div style="height: 500px;width: 500px;background-color:cornflowerblue;" onclick="fadeout(this)">
+            点击我淡出
+        </div>
+        <table border="1" cellspacing="2" cellpadding="10">
+        	<tr bordercolor="#ff0000" height="60"><th>Header</th></tr>
+        	<tr><td>Data</td></tr>
+        </table>
+        <div id="" style="width: 300px;height: 300px;background-color: greenyellow;">
+	        <div id="pardiv" style="width: 200px;height: 200px;background-color: #FD5854;">
+	        	<div style="width: 100px;height: 100px;background-color: cornflowerblue;"></div>
+	        </div>        	
+        </div>
+        <div border="0" usemap="#planetmap" alt="Planets" style="width: 200px;height: 200px;background-color: cornflowerblue;"/></div>
+
+		<map name="planetmap" id="planetmap">
+		  <area shape="circle" coords="180,139,14" href ="venus.html" alt="Venus" style="background-color: white;"/>
+		  <area shape="circle" coords="129,161,10" href ="mercur.html" alt="Mercury" />
+		  <area shape="rect" coords="0,0,110,260" href ="sun.html" alt="Sun" />
+		</map>
+        <script type="text/javascript">
+//      var i = 0;
+//          function fadeout(element){
+//              var fadeoutHandler = setInterval(fade,100);
+//              function fade(){
+//                  element.style.opacity = window.getComputedStyle(element).opacity || element.currentStyle.opacity;
+//                  if(element.style.opacity > 0){
+//                      element.style.opacity = element.style.opacity - 0.01
+//                  }else{
+//                      clearInterval(fadeoutHandler);
+//                      fadeoutHandler = undefined;
+//                  }
+//              }
+//              console.log(fadeoutHandler.toString() + i++);
+//          }
+            var fadeout = function(element){
+                var fadeoutHandler;
+                return function(element){
+                    if(fadeoutHandler == undefined) fadeoutHandler = setInterval(fade,10);//判断淡出效果是否已触发,防止重复触发效果导致动画加快
+                    function fade(){                       
+                        element.style.opacity = window.getComputedStyle(element).opacity || element.currentStyle.opacity;//兼容ie9获取当前透明度
+                        if(element.style.opacity > 0){
+                            element.style.opacity = element.style.opacity - 0.01
+                        }else{
+                            //完全透明后停止动画并重置fadeoutHandler状态
+                            clearInterval(fadeoutHandler);
+                            fadeoutHandler = undefined;
+                        }
+                    }
+                };
+            };
+            console.log(navigator.userAgent);
+            document.getElementById("pardiv").addEventListener('mouseover',function(e){
+            	debugger
+            	e;
+            },true)
+        </script>
+    </body>
+</html>

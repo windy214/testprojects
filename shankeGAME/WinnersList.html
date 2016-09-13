@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,div,dl,dt,dd,ul,ol,li,form,input,button,textarea,h1,h2,h3,p,th,td,canvas {
+				margin: 0;
+				padding: 0;
+			}
+			html,body{ height:100%; overflow:hidden; overflow-y:auto;}
+			body{
+				width: 1920px;
+				height: 894px;
+				background-image: url(img/winnerslist_bg.jpg);
+			}
+			h1{
+				font-family: "微软雅黑";
+				font-size: 45px;
+				color: #FFFFFF;
+				margin-top: 52px;
+				width: 100%;
+				text-align: center;				
+			}
+			
+			#WinnersList_mask{
+				margin: 45px auto 0 auto;
+				width: 1260px;
+				height: 620px;
+				overflow: hidden;
+			}
+			#WinnersList_container{
+				width:1290px ;
+			}
+			.list_column{
+				margin-right: 30px;
+				width: 400px;
+				height: 620px;
+				float: left;
+			}
+			.list_item{
+				/*margin-right: 30px;
+				float: left;
+				list-style: none;*/
+				margin-bottom: 20px;
+				width: 400px;
+				height: 60px;
+				background-color: #FFFFFF;
+			}
+			.list_item i{
+				display: block;
+				float: left;
+				margin-top: 15px;
+				margin-left: 28px;
+				box-sizing: border-box;
+				width: 30px;
+				height: 30px;
+				background-color: #e2e4e4;
+				border-radius: 15px;
+				-moz-border-radius: 15px;
+				-webkit-border-radius: 15px;
+				line-height: 30px;
+				text-align: center;
+				font-family: "黑体";
+				font-size: 18px;
+				color: #000000;
+				font-style: normal;
+			}
+			
+			.list_item img{				
+				box-sizing: border-box;
+				float: left;
+				margin-left: 20px;
+				margin-top: 10px;
+				width: 40px;
+				height: 40px;
+				border-radius: 20px;
+				-moz-border-radius: 20px;
+				-webkit-border-radius: 20px;
+				background-color: #2f84cf;
+			}
+			
+			.list_item p{
+				display: block;
+				float: left;
+				margin-left: 20px;
+				font-family: "微软雅黑";
+				font-size: 30px;
+				color: #043a54;
+				line-height: 60px;
+			}
+			
+			.list_item .i1{
+				background-color: #e20404;
+				color: #FFFFFF;
+			}
+			.list_item .i2{
+				background-color: #e25804;
+				color: #FFFFFF;
+			}
+			.list_item .i3{
+				background-color: #e29c04;
+				color: #FFFFFF;
+			}
+			.list_item .i4{
+				background-color: #e4cb40;
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>中奖名单</h1>
+		<div id="WinnersList_mask">
+			<div id="WinnersList_container">
+				<!--<ul>
+					<li class="list_item">
+						<i>1</i>
+						<img />
+						<p>张玲玲</p>
+					</li>
+					<li class="list_item">
+						<i>1</i>
+						<img />
+						<p>张玲玲</p>
+					</li>
+					<li class="list_item">
+						<i>1</i>
+						<img />
+						<p>张玲玲</p>
+					</li>
+				</ul>-->
+				<div class="list_column">
+					<div class="list_item">
+							<i>1</i>
+							<img />
+							<p>张玲玲</p>
+						</div>
+					</div>
+				<div class="list_column">
+					<div class="list_item">
+						<i>1</i>
+						<img />
+						<p>张玲玲</p>
+					</div>
+				</div>
+				<div class="list_column">
+					<div class="list_item">
+						<i>1</i>
+						<img />
+						<p>张玲玲</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

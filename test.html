@@ -1,0 +1,70 @@
+<html>
+<head>
+	<meta charset="UTF-8"/>
+<script type="text/javascript">
+var startTime,endTime;
+var DateObj = new Date();
+
+window.onload = function(){
+	var a = undefined;
+	var b = "undefined";
+	var c = "";
+	var d = null;
+}
+
+function start(){
+	startTime = DateObj;
+}
+function end(){
+	endTime = new Date();
+	alert(endTime-startTime);
+}
+function setFocus()
+  {
+  document.getElementById('select1').focus()
+  }
+ function threeJudge(){
+ 	var x = document.getElementById("threeJudgeX").value;
+ 	var y = document.getElementById("threeJudgeY").value;
+ 	x = x>y? 1:0;
+ }
+  function closure(){
+  	for(var i = 0;i<10;i++){
+  		(function(a){
+  			setTimeout(function(){
+  				console.log(a);
+  			},1000);
+  		})(i);
+  	}
+  }
+</script>
+</head>
+<body>
+
+<form>
+<select id="select1">
+  <option>Apple</option>
+  <option>Pear</option>
+  <option>Banana</option>
+  <option>Orange</option>
+</select>
+<br /><br />
+<input type="button" onclick="setFocus()" value="Set focus" />
+</form>
+<p> 1、先安装Apache。 </p> <p> 2、下载附件.附件是Windows下Mono的apache使用的Mod_mono.so模块。 </p> <p> 3、解压文件，把Mod_mono.so复制到apache下的modules文件夹。 </p> <p> 4、配置Apache文件夹下的conf中的httpd.conf </p> <p> 添加： </p> <p> LoadModule <span style="color:#ff6600;">mono_module</span> modules/mod_mono.so </p> <p> AddType application/x-asp-net .aspx .ashx .asmx .ascx .asax .config .ascx<br /> AddHandler <span style="color:#ff6600;">mono_module</span> .aspx .ascx .asax .ashx .config .cs .asmx .axd </p> <p> MonoAutoApplication enabled<br /> #C:/Mono/bin/mod-mono-server4为Mono下的.net4.0模块，2.0就使用C:/Mono/bin/mod-mono-server2 </p> <p> MonoServerPath <span style="color:#ff6600;">mono_module</span> "C:/Mono/bin/mod-mono-server4" </p> <p> &lt;Directory "C:/Apache/htdocs"&gt; </p> <p> &nbsp;&nbsp;&nbsp; #在主目录下添加SetHandler <span style="color:#ff6600;">mono_module</span><br /> &nbsp;&nbsp;&nbsp; SetHandler <span style="color:#ff6600;">mono_module</span><br /> &nbsp;&nbsp;&nbsp; Options Indexes FollowSymLinks<br /> &nbsp;&nbsp;&nbsp; AllowOverride None<br /> &nbsp;&nbsp;&nbsp; Order allow,deny<br /> &nbsp;&nbsp;&nbsp; Allow from all<br /> &lt;/Directory&gt; </p> <p> &nbsp; </p> <p> 注意红色字体，必须全部要一致。 </p> <p> 打完收工。。 </p>	
+<button onclick="start()">start</button>
+<button onclick="end()">end</button>
+<button onclick="closure()">closure</button>
+<button onclick="threeJudge()">threeJudge</button><input type="number" id="threeJudgeX" /><input type="number" id="threeJudgeY" />
+<div id="">
+	<label for="t1"><input type="radio" name="b" id="b1" value="" checked="checked"/><label for="b1">1</label></label>
+	<label for="t2"><input type="radio" name="b" id="b2" value="" checked="checked"/><label for="b2">t2</label></label>
+</div>
+<div id="">
+	
+<input type="radio" name="t" id="t1" value="" checked="checked"/>
+<input type="radio" name="t" id="t2" value="" />
+<span>qianming</span><textarea style="height: 200px;width: 200px;"></textarea>
+</div>
+</body>
+</html>

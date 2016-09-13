@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function(){
+				
+				debugger
+				if(xhr.readyState == 4){
+					if(xhr.status == 200){
+						console.dir(xhr);
+					}
+				}
+			}
+			
+			xhr.open("GET", "img/HBuilder.png", true);
+			xhr.send(null);
+
+		</script>
+	</head>
+	<body>
+		<img src="img/HBuilder.png"/>
+	</body>
+</html>

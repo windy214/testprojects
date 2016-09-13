@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>opacity</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			body {
+				padding: 50px;
+				background: url(img/icon.png) 0 0 repeat;
+			}
+			
+			.demo {
+				width: 200px;
+				height: 200px;
+				position: relative;
+			}
+			
+			.demo-bg {
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: -1;
+				
+				width: 200px;
+				height: 200px;
+				opacity: 0.4;
+				background-color: #F5F5F5;
+				border-left: 1px solid #DDD;
+				border-radius: 0px 0px 15px 15px;
+			}
+			
+			.demo-txt {
+				position: relative;
+				z-index: 1;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="demo">
+			<div class="demo-bg"></div>
+			<!-- 透明背景 -->
+			<div class="demo-txt">测测</div>
+		<!-- 不透明文字 -->
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/raphael.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			window.onload = function () {
+				// 在坐标（10,50）创建宽320，高200的画布
+				//var paper = Raphael(10, 50, 320, 200);
+				var paper = Raphael("canvas", 640, 480),
+				// 在坐标（x = 50, y = 40）绘制半径为 10 的圆
+				var circle = paper.circle(50, 40, 10);
+				// 给绘制的圆圈填充红色 (#f00)
+				circle.attr("fill", "#f00");
+				// 设置画笔（stroke）的颜色为白色
+				circle.attr("stroke", "#fff");
+				paper.path(M25.221,1.417H6.11c-0.865,0-1.566,0.702-1.566,1.566v25.313c0,0.865,0.701,1.565,1.566,1.565h19.111c0.865,0,1.565-0.7,1.565-1.565V2.984C26.787,2.119,26.087,1.417,25.221,1.417zM15.666,29.299c-0.346,0-0.626-0.279-0.626-0.625s0.281-0.627,0.626-0.627c0.346,0,0.627,0.281,0.627,0.627S16.012,29.299,15.666,29.299zM24.376,26.855c0,0.174-0.142,0.312-0.313,0.312H7.27c-0.173,0-0.313-0.142-0.313-0.312V4.3c0-0.173,0.14-0.313,0.313-0.313h16.792c0.172,0,0.312,0.14,0.312,0.313L24.376,26.855L24.376,26.855z).attr({fill: "#000", stroke: "none"});
+			}
+		</script>
+	</head>
+
+	<body>
+<!--		<div id="canvas">
+			<svg height="480" version="1.1" width="640" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; top: -0.90625px;">
+				<desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.2</desc>
+				<defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
+				<rect x="0" y="0" width="640" height="480" r="10" rx="10" ry="10" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+				<circle cx="320" cy="240" r="60" fill="#223fa3" stroke="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.5;" stroke-width="80" stroke-opacity="0.5"></circle>
+			</svg>
+		</div>-->
+		<svg height="40" version="1.1" width="40" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: absolute; left: 258px; top: 295px;">
+			<desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc>
+			<defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
+			<path fill="none" stroke="#ffffff" d="M16,3.5C11.858,3.5,8.5,6.8580000000000005,8.5,11C8.5,15.143,16,29.121,16,29.121S23.5,15.143,23.5,11C23.5,6.858,20.143,3.5,16,3.5ZM16,14.584C14.021,14.584,12.416,12.98,12.416,11S14.021,7.416,16,7.416S19.584,9.021,19.584,11S17.979,14.584,16,14.584Z"
+			stroke-width="3" stroke-linejoin="round" opacity="0" transform="matrix(1,0,0,1,4,4)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; opacity: 0;"></path>
+			<path fill="#333333" stroke="none" d="M16,3.5C11.858,3.5,8.5,6.8580000000000005,8.5,11C8.5,15.143,16,29.121,16,29.121S23.5,15.143,23.5,11C23.5,6.858,20.143,3.5,16,3.5ZM16,14.584C14.021,14.584,12.416,12.98,12.416,11S14.021,7.416,16,7.416S19.584,9.021,19.584,11S17.979,14.584,16,14.584Z"
+			transform="matrix(1,0,0,1,4,4)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+			<rect x="0" y="0" width="32" height="32" r="0" rx="0" ry="0" fill="#000000" stroke="#000" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;"></rect>
+		</svg>
+
+	</body>
+
+</html>

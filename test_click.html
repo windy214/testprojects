@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function toclick(){
+				document.getElementById("btn2").click();
+			}
+			function change(){
+				document.getElementById("testarea").style.backgroundColor = "#000000";
+			}
+			var raiseSelectMenu = function () {
+  var eventOptions = {
+    'view': window,
+    'bubbles': true,
+    'cancelable': true
+  };
+  var menu = document.getElementById('selectMenu');
+  menu.dispatchEvent(new MouseEvent('mousedown', eventOptions));
+  menu.dispatchEvent(new MouseEvent('mouseup', eventOptions));
+};
+    
+var delayRaiseSelectMenu = function () {
+  window.setTimeout(raiseSelectMenu, 0);
+};
+    
+document.getElementById('delay').onclick = delayRaiseSelectMenu;
+document.getElementById('nodelay').onclick = raiseSelectMenu;
+		</script>
+	</head>
+	<body>
+		<div id="testarea" style="width: 100px;height: 100px;">效果区域</div>
+		<button id="btn1" onclick="toclick()">代理按钮</button>
+		<button id="btn2" onclick="change()">实际按钮</button>
+	</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/welink20160331.css"/>
+		<style type="text/css">
+		#page{
+			padding:4px 0;
+			list-style: none;
+			display:inline;
+		}
+		#page li{
+			width: 24px;
+			height: 24px;
+			border:1px solid #1B7DD1 ;
+			display: inline-block;
+			text-align: center;
+			margin: 5px;
+			background-color: #FFFFFF;
+			font-family: "微软雅黑";
+			line-height: 24px;
+		}		
+		</style>
+	</head>
+	<script type="text/javascript">
+		window.onload = function() {
+			var dataset = strToJson('{"tableCount":1,"success":true,"error":"","data":[{"rowCount":147,"table":[{"nickname":"小灰ぜ","headimgurl":"http://wx.qlogo.cn/mmopen/icFFTGdLJq97VwvRIpVk7Hpl8uHVsIxIYHG7aX9zV8WaOhju2OsFK4jhxslshjyPdlAG9aLp6ptRibyZqJCDiaria3LswYYUC1cW/0","mobile":"","currentTime":"2016-04-08","OpenID":"oUx8Bwa-qOvs5iYG9hM0kAj-p6RI"},{"nickname":"SYX","headimgurl":"http://wx.qlogo.cn/mmopen/Vvb4CAtCJpN3uEvAtmu1TcmBlHNbbNltU3xWuTV7BWkiaiaGiatddC1Ra65qrUic2Ys5sQ400xD1CHUPXKekrjyHQdCr1PpjDzz8/0","mobile":"","currentTime":"2016-04-08","OpenID":"oUx8BwaSw0s97P64MybyzHbRZhTY"},{"nickname":"李涛","headimgurl":"http://wx.qlogo.cn/mmopen/GyuRcg1ibDHYQxOYJhlQvIXojiagqpbbDdmtKQj8JMyfxiajOsFNj8A6JJ45sErb929zEZfVLKxATeicUrgiafxv8dB2ibdia4Jc4mw/0","mobile":"","currentTime":"2016-04-08","OpenID":"oUx8Bwb_KHz4Mq5Zvg1s_2gsU2o8"},{"nickname":"毛华亮","headimgurl":"http://wx.qlogo.cn/mmopen/UOCHvzUGAIVc0CuM71A0HReVyQS00OYDZY6AN69RFmDbaXRBKVUP1nHAL6aS15Wj3JksUJXQhLaQCiahI0icFryQ/0","mobile":"","currentTime":"2016-04-08","OpenID":"oUx8BwbbgspOl1636gawixIxJ3i0"},{"nickname":"细水长流","headimgurl":"http://wx.qlogo.cn/mmopen/UOCHvzUGAIUaLaoUGWFAf11PNYzlZNib1Xibk4sF7eQUnG8um7Sj8vo3ujSolnmmCoeTC11EYUq95dYiaSb8TGt5Q/0","mobile":"","currentTime":"2016-04-08","OpenID":"oUx8BwbGFwUPcw_QYdk9ETjzBBuU"},{"nickname":"333","headimgurl":"http://wx.qlogo.cn/mmopen/PiajxSqBRaEIPwQehjlDUE250VWKn6zILCFvfibrarAGVdOqs8Ex1u0yemzpBRbXnlml63XMQq1C0UtZGCVMhGfA/0","mobile":"","currentTime":"2016-04-08","OpenID":"oUx8BwbGwdtaawcuadva-y6PWz9w"},{"nickname":"柏岳","headimgurl":"http://wx.qlogo.cn/mmopen/PiajxSqBRaEK5OsJBsURfLjibLsNic4lawMcrWEkyKJKfK51kPo5iaFcA7Oj35PSVicPXglHKOzzPM1a7boibpzCAKFA/0","mobile":"","currentTime":"2016-04-08","OpenID":"oUx8Bwbhv-vu1fnL-Csp9VxV3kQQ"},{"nickname":"   蔡琳","headimgurl":"http://wx.qlogo.cn/mmopen/Vvb4CAtCJpN3uEvAtmu1Tejz3cngicJZG5P2v3L6fRygDQ8PTricrj7QadyhD3vJJGPnic3Oiav6ibxmsHMtJibrgCbLe9ocoG8hfL/0","mobile":"","currentTime":"2016-04-08","OpenID":"oUx8BwbiLlrkgLlAO2ShJvf8fWWs"},{"nickname":"开心就好","headimgurl":"http://wx.qlogo.cn/mmopen/ck6MzoSOwCmqSVg9CJwKdhnFBKO5MnuASbWTxNvicJgx0Xagfhs9aj65elpfb9A3ytHdyQxeWcuoSpwpAibpA9mdOQwuJRp7ee/0","mobile":"","currentTime":"2016-04-08","OpenID":"oUx8BwbOGm6GmeCZ8M0wUf-PCpz0"},{"nickname":"活在梦里丶","headimgurl":"http://wx.qlogo.cn/mmopen/icFFTGdLJq97VwvRIpVk7HuvYfDbBlcmtTrwIPicN3bqa3KQTBwa90h7nzK0ibT5qEu3MlEzVGrI4VpS2fVBl92ZLSfe3aEoB62/0","mobile":"","currentTime":"2016-04-08","OpenID":"oUx8BwbPy-pgTkngTx5iXEy5SLRw"},{"nickname":"a qi","headimgurl":"http://wx.qlogo.cn/mmopen/UOCHvzUGAIWlMQiaefibKibZr0tibDDqwdw8IfasHd6WLkTM5SakicBsAYJtLX6X8yBhNuP88uVpwhkoJOuro2Dcz6w/0","mobile":"","currentTime":"2016-04-08","OpenID":"oUx8BwbshYfl-8xZtw_r_dau65OQ"},{"nickname":"入戏太深","headimgurl":"http://wx.qlogo.cn/mmopen/Vvb4CAtCJpNZF3vsnMuJN8fgWuVZia8bgsYYLRb5HZH8zPedLIiaXzdRgy5VBNgPE3LaG7LApeMriab48BjmPJBp1LgqalxuBfia/0","mobile":"","currentTime":"2016-04-08","OpenID":"oUx8BwbsRqizlx9xqXRPz2ip8Mgc"},{"nickname":"小杨杏林集美海沧乌涂去石狮专车","headimgurl":"http://wx.qlogo.cn/mmopen/ck6MzoSOwCkaSCicGudq56P95WxS7LQdskh7l590K93M1QDvUictPHOm4glosmYR5tib7VUJjuaiccSQZcUia7aP50yZJhs39w5hh/0","mobile":"","currentTime":"2016-04-08","OpenID":"oUx8BwZZE74PIeIE8kUX5C3g0EHc"}]}]}')
+			var info
+			var html = ""
+			var index = 0;
+			var pagenum = 2;
+			var pagevessal = 3;
+			var startpage = (pagenum-1)*pagevessal;
+			var endpage = startpage +pagevessal;
+			info = dataset.data[index];
+			if (info.rowCount > 0) {
+				for (var i = startpage,len=info.table.length; i <endpage &&i<len; i++) {
+					html += '<div class="collumn_title white_bg">';
+					html += '<div class="dl">';
+					html += '<img src="img/time.png" class="ver-m">';
+					html += '</div>';
+					html += ' <h4>加入时间：' + info.table[i].currentTime + '</h4>';
+					html += ' </div>';
+					html += '<div class="collumn_main bb white_bg">';
+					html += '<div class="head_img">';
+					html += '<img src="' + info.table[i].headimgurl + '" class="portrait_1">';
+					html += '</div>';
+					html += '<p>';
+					html += '<span class="fs16">' + info.table[i].nickname + '</span><br/>';
+					html += '<span class="db pt">电话:' + info.table[i].mobile + '</span>';
+					html += ' </p>';
+					html += '<div class="twobtn_verticalR">';
+					html += '<i class="mb10"><input type="button" value="集客群" onclick="CustomerTransfer(\'' + info.table[i].OpenID + '\')" class="bt_assemble"/></i>';
+					html += '<i><a href="tel:' + info.table[i].mobile + '" class="bt_cs blue_bg link_style">联系TA</a></i>';
+					html += '</div>';
+					html += '</div>';
+				}
+			}
+			document.getElementById("content").innerHTML = html;
+		}
+
+		function strToJson(str) {
+			if (str == "")
+				return "";
+			var json = eval('(' + str + ')');
+			return json;
+		}
+	</script>
+
+	<body>
+		<div id="content">
+
+		</div>
+		<div style="text-align:center">
+		<ul id="page">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>...</li>
+			<li>10</li>
+			<li>11</li>
+		</ul>
+		</div>
+	</body>
+
+</html>

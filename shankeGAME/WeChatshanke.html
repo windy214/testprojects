@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">			
+			body,div,dl,dt,dd,ul,ol,li,form,input,button,textarea,h1,h2,h3,p,th,td,canvas {
+				margin: 0;
+				padding: 0;
+			}
+			html,body{ height:100%; overflow:hidden; overflow-y:auto;}
+			body{
+				font-size: 62.5%;
+				width: 100%;
+				height: 100%;
+				background-image: url(img/wechat_bg.jpg);
+				background-size: cover;
+				-webkit-background-size: cover;
+			}
+			#logo img{
+				display: block;
+				margin: 0 auto 0 auto;
+				width: 75%;
+			}
+			#text{
+				margin-top: 8em;
+				line-height: 8.4em;
+				vertical-align: bottom;
+				text-align: center;
+				font-family: "microsoft yahei";
+			}
+			.txt{
+				font-size: 7em;
+				color: #614d02;
+			}
+			.num{
+				font-size: 8.4em;
+				color: #9a1705;
+			}
+			#btntosay{
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				border-top:0.2em solid #ECD62F ;
+				background-color: #FFFFFF;
+				font-family: "microsoft yahei";
+				color: #ECB34B;
+				height: 3.2em;
+				line-height: 3.2em;
+				font-size: 4.2em;
+				text-align: center;
+			}
+			/*#selection{
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				border-top:0.2em solid #ECD62F ;
+				background-color: #FFFFFF;
+				font-family: "microsoft yahei";
+				color: #ECB34B;
+				height: 3.2em;
+				line-height: 3.2em;
+				font-size: 4.2em;
+				text-align: center;
+			}*/
+			#selection{
+				opacity: 0;
+			}
+			#selection option:first-child{
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+		var ShakeLotteryName = "";
+		var time_tick = 5;
+		var shakeCount = 0;
+		var startTime,lastTime;
+		var countdown;
+			window.onload = function(){
+				var blankTop = document.getElementById("blank_top");
+				blankTop.style.width = document.body.clientWidth + "px";
+				blankTop.style.height = Math.round(document.body.clientWidth/750*140) + "px";
+				
+				countdown = setInterval(CountDown,1000);
+			}
+			function CountDown(){
+				document.getElementById("txtfront").innerHTML = "游戏将在";
+				document.getElementById("num").innerHTML = time_tick;
+				document.getElementById("txtback").innerHTML = "秒后开始";
+				time_tick --;
+				if(time_tick<0){
+					addShakeListener();
+					clearInterval(countdown);
+				}
+			}
+			function Racing(){
+				document.getElementById("txtfront").innerHTML = "摇了";
+				//document.getElementById("num").innerHTML = shakeCount;
+				document.getElementById("txtback").innerHTML = "次";
+			}
+			function addShakeListener(){
+				document.getElementById("txtfront").innerHTML = "摇了";
+				document.getElementById("txtback").innerHTML = "次";
+				startTime = new Date();
+				if(window.DeviceMotionEvent) {
+					window.addEventListener('devicemotion',DeviceMotionListener, false);
+				}
+			}
+			 function DeviceMotionListener(){
+				var acceleration =event.accelerationIncludingGravity;
+				var speed = 25;
+				var x = y = z = lastX = lastY = lastZ = 0;
+				x = acceleration.x;
+				y = acceleration.y;
+				z = acceleration.z;
+				
+				if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed) {
+					shakeCount += parseInt(1);//自加变量
+					document.getElementById("num").innerHTML = Math.round(shakeCount/2);
+					if(shakeCount == 200){
+						lastTime =  new Date() - startTime;
+						//发送时间
+						alert(lastTime);
+						window.removeEventListener('devicemotion',DeviceMotionListener, false);
+					}
+				}
+				lastX = x;
+				lastY = y;
+			}
+			function clicktosay(){
+			//	document.getElementById("btntosay").style.display = "none";
+			//	document.getElementById("selection").style.display = "block";
+				//ios不兼容此延迟方法setTimeout(function(){
+					var element=document.getElementById("selection"), worked=false;
+		            if(document.createEvent)
+		            {
+		                var e=document.createEvent("MouseEvents");
+		                e.initMouseEvent("mousedown", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		                worked=element.dispatchEvent(e);
+		            }
+		            else if(element.fireEvent)
+		            {
+		                worked=element.fireEvent("onmousedown");
+		            }
+		            if(!worked)
+		            {
+		                alert("It didn't worked in your browser.");
+		            }
+		        //}, 100);
+//		        	var raiseSelectMenu = function () {
+//						var eventOptions = {
+//						    'view': window,
+//						    'bubbles': true,
+//						    'cancelable': true
+//					    };
+//						    var menu = document.getElementById('selection');
+//							menu.dispatchEvent(new MouseEvent('mousedown', eventOptions));
+//							menu.dispatchEvent(new MouseEvent('mouseup', eventOptions));
+//					};
+			}
+			function sendMsg(){
+				var selection = document.getElementById("selection");
+				var eleIndex = selection.selectedIndex;
+				var eleValue = selection.options[eleIndex].value;
+				if(eleIndex != null && eleValue != 0){
+					var eleText = selection.options[eleIndex].text;
+					alert(eleText);//触发数据流
+					selection.options[0].selected=true; //重置选中项保证onchange事件触发
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="blank_top"></div>
+		<div id="logo"><img src="img/wechat_logo1.png"/></div>
+		<div id="text">
+			<span id="txtfront" class="txt">游戏还未开始,敬请期待。</span>
+			<span id="num" class="num"></span>
+			<span id="txtback" class="txt"></span>
+		</div>
+		<div id="btntosay" onclick="clicktosay()">点我发言</div>
+		<select  id="selection" style="position:absolute;top: 0;left: 0;" onchange="sendMsg()">
+			<option value="0">——选择一条上墙吧——</option>			
+		<option value="1">我要上墙!</option>
+		<option value="2">比赛快开始快开始!</option>
+		<option value="3">给我来一打雷克萨斯!</option>
+		<option value="4">我是路过的...</option>
+		<option value="5">有趣[嘿嘿嘿]</option>
+		</select>
+	</body>
+</html>

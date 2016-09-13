@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/raphael.js"></script>
+		<script>
+			window.onload = function () {
+			                var paper = Raphael("canvas", 640, 480),
+			                    btn = document.getElementById("run"),
+			                    cd = document.getElementById("code");
+			
+			                (btn.onclick = function () {
+			                    paper.clear();
+			                    paper.rect(0, 0, 640, 480, 10).attr({fill: "#fff", stroke: "none"});
+			                    try {
+			                        (new Function("paper", "window", "document", cd.value)).call(paper, paper);
+			                    } catch (e) {
+			                        alert(e.message || e);
+			                    }
+			                })();
+			            };
+		</script>
+	</head>
+
+	<body>
+		<div id="canvas">
+			<svg height="480" version="1.1" width="640" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; top: -0.90625px;">
+				<desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.2</desc>
+				<defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
+				<rect x="0" y="0" width="640" height="480" r="10" rx="10" ry="10" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+				<circle cx="320" cy="240" r="60" fill="#223fa3" stroke="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.5;" stroke-width="80" stroke-opacity="0.5"></circle>
+			</svg>
+		</div>
+	</body>
+
+</html>

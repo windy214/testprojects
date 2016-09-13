@@ -1,0 +1,27 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml">
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	</head>
+	<style>
+	v\:* { BEHAVIOR: url(#default#VML) }
+	</style>
+	<script>
+		window.onload = function() {
+			var o = document.createElement('v:RoundRect');
+			o.style.position = 'relative';
+			o.style.width = 100;
+			o.style.height = 50;
+			var s = document.createElement('v:TextBox');
+			s.inset = '5pt,5pt,5pt,5pt';
+			//s.style='font-size:10.2pt';
+			s.innerText = '这里是你想插入的文字'; //这里是你想插入的文字
+			o.appendChild(s);
+			document.body.insertAdjacentElement('BeforeEnd', o);
+		}
+		
+	</script>
+
+	<body>
+	</body>
+</html>

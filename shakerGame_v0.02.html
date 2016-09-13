@@ -1,0 +1,141 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<style type="text/css">
+			/*初始化*/
+			body,div,dl,dt,dd,ul,ol,li,form,input,button,textarea,p,th,td {margin: 0;padding: 0;}
+			#background{
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				width: 100%;
+				height: 100%;
+				z-index: -9999;
+				background-color: red
+			}
+			#myCanvas{
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				z-index: -500;
+			}
+			.typeA{
+				position: relative;
+				background-color: rgb(0,121,215);
+			}
+			.typeB{
+				position: relative;
+				background-color: rgb(36,163,232);
+			}
+			#bottonStart,#bottonStop{
+				position: absolute;
+				right: 180px;
+				top: 6px;
+				background-color: rgb(36,163,232);
+				width: 60px;
+				height: 40px;
+				border-radius: 5px;
+				line-height: 40px;
+				text-align: center;
+			}
+			#bottonStart,#bottonStop:hover{
+				cursor: pointer;
+			}
+			#bottonStop{
+				right: 80px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--背景图片-->
+		<div id="background"></div>
+		<!--<p>要使用的图片:</p>-->
+		<img id="scream" src="img/HBuilder.png" style="display: none;">
+
+		<div id="bottonStart" onclick="start()">START</div>
+		<div id="bottonStop" onclick="stop()">STOP</div>
+		<!--<p>Canvas:</p>-->
+		<canvas id="myCanvas">您的浏览器不支持 HTML5 canvas 标签。</canvas>
+	</body>
+
+	<script>
+		var c,ctx,width,height;
+		var img;//默认图片
+		var rankNum = 5;//上榜人数
+		var str = "";
+		var flag = 0;
+		var ratio = 500;//跑步系数
+		var step = 0;//步数
+		var Runners = new Array();
+		
+		//跑马对象
+		function createRunObject(lineHeight) {
+			var runObj = new Object();
+			runObj.id = "";
+			runObj.img = img;
+			runObj.locationX = 0;
+			runObj.locationY = 0;
+			runObj.height = lineHeight*0.8;
+			runObj.draw = function(step) {//绘制竞速情况
+				runObj.locationX = runObj.locationX +width/ratio;
+				//runObj.locationX = width/ratio*step;//根据步数来确定位置
+				if(runObj.locationX>width)
+				runObj.locationX = 0;
+				ctx.drawImage(runObj.img,runObj.locationX,runObj.locationY,runObj.height,runObj.height);//头像定位
+			};
+			return runObj;
+		}
+
+		window.onload = function() {
+			//参数赋值
+			c = document.getElementById("myCanvas");
+			ctx = c.getContext("2d");
+			img = document.getElementById("scream");//默认图片
+			width = document.body.clientWidth;
+			height = document.body.clientHeight;
+			//生成跑马图
+			var border = 100;//上下留白高度
+			var lineHeight = Number(height - border)/rankNum;
+			str = str + '<div style="position: relative;margin:'+border/2+'px 0;">';//使跑道居中
+			for(var i=0;i<rankNum;i++){
+				if(flag == 0){
+					str = str + '<div class="typeA" style="height:' + lineHeight +'px;"></div>';
+				}else if(flag == 1){
+					str = str + '<div class="typeB"  style="height:' + lineHeight +'px;"></div>';
+				}
+				flag = (flag+1)%2;
+				//生成竞速对象
+				Runners[i] = createRunObject(lineHeight);
+				Runners[i].locationY = (i+0.5)*lineHeight + border/2 - Runners[i].height/2;
+			}
+			str = str + '</div>';
+			document.getElementById("background").innerHTML = str;
+			//设置画布宽高
+			c.setAttribute("width", width);
+			c.setAttribute("height", height);
+		}
+		//竞速
+		function Race(){
+			ctx.clearRect(0,0,width,height);
+			for(i=0;i<rankNum;i++){
+				Runners[i].img = img;//
+				Runners[i].draw(step);
+			}
+		}
+		//控制
+		var startClick;
+		function start() {
+			//防止重复点击
+			if (startClick == undefined)
+			//大约60HZ频率刷新竞速情况
+				startClick = setInterval(Race, 16);
+		}
+		function stop() {
+			clearInterval(startClick);
+			startClick = undefined;
+		}
+	</script>
+
+</html>

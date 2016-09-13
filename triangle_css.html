@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<style>
+			#demo11 {
+				border: 10px solid #000;
+				border-left-color: #f00;
+				width: 10px;
+				height: 10px;
+			}
+			
+			#demo12 {
+				border: 10px solid #000;
+				border-left-color: #f00;
+				width: 0;
+				height: 0;
+			}
+			
+			#demo14 {
+				border: 10px solid transparent;
+				border-left: 20px solid #f00;
+				width: 0;
+				height: 0px;
+			}
+			
+			#demo15 {
+				position: relative;
+			}
+			
+			#demo15:after,
+			#demo15:before {
+				border: 10px solid transparent;
+				border-left: 10px solid #fff;
+				width: 0;
+				height: 0;
+				position: absolute;
+				top: 0;
+				right: -20px;
+				content: ' '
+			}
+			
+			#demo15:before {
+				border-left-color: #f00;
+				right: -21px;
+			}
+			
+			#demo {
+				width: 100px;
+				height: 100px;
+				background-color: #ccc;
+				position: relative;
+				border: 4px solid #333;
+			}			
+			#demo:after,
+			#demo:before {
+				border: solid transparent;
+				content: ' ';
+				height: 0;
+				left: 100%;
+				position: absolute;
+				width: 0;
+			}			
+			#demo:after {
+				border-width: 9px;
+				border-left-color: #ccc;
+				top: 15px;
+			}			
+			#demo:before {
+				border-width: 14px;
+				border-left-color: #333;
+				top: 10px;
+			}
+			
+			#demo0 {
+				width: 100px;
+				height: 100px;
+				background-color: #ccc;
+				position: relative;
+				border: 4px solid #333;
+			}			
+			#demo0:after,
+			#demo0:before {
+				border: solid transparent;
+				content: ' ';
+				height: 0;
+				position: absolute;
+				width: 0;
+			}			
+			#demo0:after {
+				border-width: 9px;
+				border-bottom-color: #ccc;
+				top: -18px;
+				right: 15px;
+			}			
+			#demo0:before {
+				border-width: 14px;
+				border-bottom-color: #333;
+				top: -28px;
+				right: 10px;
+			}
+			
+			.margin30{
+				margin: 30px;
+			}
+			
+			.demo_arrow{
+				background-color: red;
+				position: relative;
+				width: 100px;
+				height: 30px;
+			}
+			.demo_arrow:before,.demo_arrow:after{
+				border: solid transparent;
+				content: '';
+				position: absolute;
+			}
+			.demo_arrow:before{
+				border-width: 15px;
+				border-left-color: red;
+				left: 100%;
+				top: 0;
+			}
+			.demo_arrow:after{
+				border-width: 15px;
+				border-color: red;
+				border-left-color: transparent;
+				border-right-width: 5px;
+				right: 100% ;
+				top: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="demo11" class="margin30"></div>
+		<div id="demo12" class="margin30"></div>
+		<div id="demo14" class="margin30"></div>
+		<span id="demo15" class="margin30">文字内容</span>
+		<div id="demo" class="margin30" onclick="checkkkk()">132456</div>
+		<div id="demo0" class="margin30"></div>
+		<div id="" class="margin30 demo_arrow">
+		<p style="overflow: hidden;width: 100%;height:100%;line-height: 30px;margin: auto;">helloworld!dsfdfa</p>
+		</div>
+	</body>
+	
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js "></script>
+	<script type="text/javascript">
+		
+function checkkkk() {
+        	$('iframe').children('body')
+            var h = document.body.clientHeight;
+            document.body.onscroll = function() {
+            	
+            console.log(document.body.scrollTop);
+            }
+            
+        }
+	</script>
+</html>

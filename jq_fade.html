@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+   <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+   <style type="text/css">
+   	.textarea_item{
+   		width: 300px;
+   		height: 200px;
+   		border: 3px solid #2F84CF;
+   		font-size: 50px;
+   	}
+   </style>
+   <script type="text/javascript">
+   var i=1;
+   	function creatdiv(){
+   		var msg_item = null;
+		if (!msg_item) {
+		    msg_item = document.createElement('div');
+		    msg_item.className = "textarea_item";
+		    msg_item.innerHTML = i;
+		    document.getElementById("testarea").appendChild(msg_item);
+		}
+		if($("#testarea").children().length>3)
+		removeChild_fade($("#testarea>:first"),200);
+		
+		i++;
+   	}
+   	function removeChild_fade(ele){
+   		ele.fadeOut(1000,function(){
+   		setTimeout(ele.remove(),1000);
+   		});
+   	}
+   	
+   	function removeChild_scroll(ele,eleHeight){
+   		for(var i = 0 ;i<eleHeight;i++){
+   			ele.css("marginTop",(ele.css("marginTop") - 1));
+   		}
+   		ele.remove();
+   	}
+   </script>
+	</head>
+	<body>
+		<button onclick="creatdiv()">
+			测试
+		</button>
+		<div id="testarea">
+			
+		</div>
+	</body>
+</html>

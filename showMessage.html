@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		//显示提示文本，text为要显示的文本，second表示自动消失的秒数  
+		function showTip(text, second) {
+			var tip = null;
+			if (!tip) {
+				tip = document.createElement('div');
+				tip.style.backgroundColor = '#000';
+				tip.style.color = '#fff';
+				tip.style.fontSize = '18px';
+				tip.style.fontWeight = 'bold';
+				tip.style.fontFamily = '微软雅黑';
+				tip.style.width = 'auto';
+				tip.style.height = 'auto';
+				tip.style.padding = '10px 30px 10px 30px';
+				tip.style.borderRadius = '6px';
+				tip.style.opacity = '0.7';
+				tip.style.position = 'fixed';
+				tip.style.zIndex = '99999';
+				document.body.appendChild(tip);
+			}
+			tip.innerHTML = text;
+			tip.style.display = 'inline-block';
+			tip.style.top = (document.documentElement.clientHeight / 2 - tip.offsetHeight / 2) + 'px';
+			tip.style.left = (document.documentElement.clientWidth / 2 - tip.offsetWidth / 2) + 'px';
+			setTimeout(function disappear() {
+				tip.style.display = 'none';
+			}, second * 1000);
+		}
+		//显示确认窗口，text为要显示的文本，yescallback确认回调函数,nocallback取消回调函数
+		function showConfirm(text,yescallback,nocallback) {
+			var tip = null;
+			var confirm = null;
+			var choice = null;
+			var choice_y = null;
+			var choice_n = null;
+			if (!tip) {
+				//配置窗口参数
+				tip = document.createElement('div');
+				tip.style.backgroundColor = '#000';
+				tip.style.color = '#fff';
+				tip.style.fontSize = '18px';
+				tip.style.fontWeight = 'bold';
+				tip.style.fontFamily = '微软雅黑';
+				tip.style.width = 'auto';
+				tip.style.height = 'auto';
+				tip.style.padding = '10px 20px';
+				tip.style.borderRadius = '6px';
+				tip.style.opacity = '0.7';
+				tip.style.position = 'fixed';
+				tip.style.zIndex = '99999';
+				//配置确认块				
+				confirm = document.createElement('div');
+				choice = document.createElement('span');				
+				choice.style.backgroundColor = '#fff';
+				choice.style.color = '#000';
+				choice.style.borderRadius = '5px';
+				choice.style.float = "right";
+				choice.style.marginLeft =  '10px';
+				choice.style.opacity = '0.9';
+				choice.style.padding = '0 10px';
+				choice.style.fontSize = '14px';
+				
+				choice_y = choice.cloneNode(true);
+				choice_n = choice.cloneNode(true);
+				
+				document.body.appendChild(tip);
+				tip.innerHTML = text;
+				tip.setAttribute('onclick', 'this.style.display = \'none\';');
+				tip.appendChild(confirm);
+				choice_n.innerHTML = "否";
+				choice_n.setAttribute('onclick', nocallback);
+				confirm.appendChild(choice_n);
+				choice_y.innerHTML = "是";
+				choice_y.setAttribute('onclick',yescallback);
+				confirm.appendChild(choice_y);				
+			}
+			tip.style.display = 'inline-block';
+			tip.style.top = (document.documentElement.clientHeight / 2 - tip.offsetHeight / 2) + 'px';
+			tip.style.left = (document.documentElement.clientWidth / 2 - tip.offsetWidth / 2) + 'px';
+		}
+		function say(str){
+			i = str;
+			alert(i);
+		}
+		var a =function note(){
+			alert('1');
+		}
+	</script>
+
+	<body>
+	<button onclick="showConfirm('it works!','function(){say(\'确认\')}','say(\'取消\')')">显示确认框</button>
+	</body>
+</html>
