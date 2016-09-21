@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+	html,body,div{
+		width: 100%;
+		padding: 0;
+		margin: 0;
+		background-color: #E2E4E4;
+		background-clip: content-box;
+	}
+	div+div{
+		padding-top: 10px;
+	}
+	#head{
+		height: 100px;
+		background-color: #FFFFFF;
+	}
+	#banner{
+		height: 240px;
+		background-color: #2F84CF;
+	}
+	#filter{
+		height: 200px;
+		background-color: #97483E;
+	}
+	#container{
+		height: 400px;
+		background-color: #F24E06;
+	}
+	#footer{
+		height: 300px;
+		background-color: #555555;
+	}
+	</style>
+	<script type="text/javascript">
+		/* 
+		 * addEventListener:监听Dom元素的事件 
+		 *  
+		 * target：监听对象 
+		 * type：监听函数类型，如click,mouseover 
+		 * func：监听函数 
+		 */
+		function addEventHandler(target, type, func) {
+			if(target.addEventListener) {
+				//监听IE9，谷歌和火狐 
+				target.addEventListener(type, func, false);
+			} else if(target.attachEvent) {
+				target.attachEvent("on" + type, func);
+			} else {
+				target["on" + type] = func;
+			}
+		}
+		/* 
+		 * removeEventHandler:移除Dom元素的事件 
+		 *  
+		 * target：监听对象 
+		 * type：监听函数类型，如click,mouseover 
+		 * func：监听函数 
+		 */
+		function removeEventHandler(target, type, func) {
+			if(target.removeEventListener) {
+				//监听IE9，谷歌和火狐 
+				target.removeEventListener(type, func, false);
+			} else if(target.detachEvent) {
+				target.detachEvent("on" + type, func);
+			} else {
+				delete target["on" + type];
+			}
+		}
+	</script>
+	<body>
+		<div id="head"></div>
+		<div id="banner"></div>
+		<div id="filter"></div>
+		<div id="container"></div>
+		<div id="footer"></div>
+		
+		<script type="text/javascript">
+			var padding = 10;
+			var fixTarget = document.getElementById("filter");
+			var targetPos = fixTarget.offsetTop;
+			var spanHeight =  fixTarget.nextElementSibling.offsetTop - targetPos + padding;
+			addEventHandler(window,"scroll",bannerfixer);
+			function bannerfixer(){
+				if(document.body.scrollTop > targetPos - 0 + padding){
+					fixTarget.style.position = "fixed";
+					fixTarget.style.top = "0";
+					fixTarget.style.paddingTop = "0";
+					
+					fixTarget.nextElementSibling.style.paddingTop = spanHeight + "px";
+				}else{
+					fixTarget.style.position = "";
+					fixTarget.style.top = "";
+					fixTarget.style.paddingTop = "";
+					
+					fixTarget.nextElementSibling.style.paddingTop = "";
+				}
+			}
+		</script>
+	</body>
+</html>
