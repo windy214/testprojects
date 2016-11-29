@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <title>移动端长按解决方案</title>
+    </head>
+    <body style="height: 5000px;">
+        <div id="button" style="width: 340px;height: 210px;background-color: cornflowerblue;transition-property: background-color;transition-duration: .8s;"></div>
+        <script type="text/javascript">
+            var target = document.getElementById("button");
+            var timer = 0;
+            var startX,startY;
+            target.addEventListener('touchstart', function(event) {
+                event.preventDefault();
+                var touch = event.targetTouches[0];
+                startX = touch.pageX;
+                startY = touch.pageY;
+                target.style.transitionDuration = "1.1s";
+                target.style.backgroundColor = "plum";
+                //触发延迟事件
+                timer = setTimeout(function() {
+                    alert('success');
+                    target.style.transitionDuration = "0s";
+                    target.style.backgroundColor = "cornflowerblue";
+                }, 800);
+            }, false);
+
+            target.addEventListener('touchmove', checkifcancel, false);
+            target.addEventListener('touchend', function() {
+                if(timer) cancelTimer();
+            },false);
+
+            function checkifcancel(e) {
+                var touch = e.targetTouches[0];
+                endX = touch.pageX;
+                endY = touch.pageY;
+                if(Math.abs(startX - endX) > 5 || Math.abs(startY - endY) > 5 ) {
+                    cancelTimer();
+                }
+            }
+
+            function cancelTimer() {
+                target.style.transitionDuration = "0s";
+                target.style.backgroundColor = "cornflowerblue";
+                clearTimeout(timer);
+                timer = 0;
+            }
+        </script>
+    </body>
+</html>
